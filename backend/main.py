@@ -82,7 +82,7 @@ app = FastAPI(
 # After deploying frontend/ to Vercel, either:
 #   1. set FRONTEND_ORIGIN=https://<your-app>.vercel.app in .env, or
 #   2. replace the default below with the URL Vercel gives you.
-# Repo: https://github.com/Dev-9913/AI-Business-Research-Agent-Backend
+# Repo: https://github.com/Dev-9913/AI-Business-Research-Agent-
 VERCEL_FRONTEND_URL = os.getenv("FRONTEND_ORIGIN", "https://ai-business-research-agent.vercel.app").rstrip("/")
 
 # Allow the local Vite dev server (and a same-origin production build)

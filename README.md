@@ -99,8 +99,8 @@ flowchart TD
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/Dev-9913/AI-Business-Research-Agent-Backend.git
-cd AI-Business-Research-Agent-Backend
+git clone https://github.com/Dev-9913/AI-Business-Research-Agent-.git
+cd AI-Business-Research-Agent-
 
 # 2. Create and activate a virtual environment
 python3 -m venv venv
