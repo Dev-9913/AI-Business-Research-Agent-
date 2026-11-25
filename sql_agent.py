@@ -128,7 +128,7 @@ class SQLAgent:
         self._llm = ChatGroq(
             model=model_name,
             temperature=temperature,
-            max_retries=1,      # fail fast instead of waiting ~56s per retry
+            max_retries=3,      # free-tier TPM limits ask for a few seconds; the SDK honors retry-after
             timeout=20,          # give up after 20s instead of hanging indefinitely
         )
 

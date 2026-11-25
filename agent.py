@@ -70,7 +70,7 @@ logger = logging.getLogger(__name__)
 # local for now so this module stays fully functional on its own.
 GROQ_MODEL_NAME = os.getenv(
     "GROQ_MODEL_NAME",
-    "llama-3.3-70b-versatile"
+    "openai/gpt-oss-120b"
 )
 TOOL_LABEL_SQL: Final[str] = "SQL Agent"
 TOOL_LABEL_WEB: Final[str] = "Web Research"
@@ -133,7 +133,7 @@ class BusinessAgent:
         self._llm = ChatGroq(
             model=model_name,
             temperature=temperature,
-            max_retries=1,      # fail fast instead of waiting ~56s per retry
+            max_retries=3,      # free-tier TPM limits ask for a few seconds; the SDK honors retry-after
             timeout=20,          # give up after 20s instead of hanging indefinitely
         )
 
