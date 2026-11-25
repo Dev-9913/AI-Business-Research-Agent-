@@ -1,0 +1,17 @@
+# Render Blueprint: deploys the FastAPI backend as a free web service.
+# Render prompts for the values marked `sync: false` when the Blueprint is created.
+services:
+  - type: web
+    name: ai-business-research-agent-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: TAVILY_API_KEY
+        sync: false
+      - key: FRONTEND_ORIGIN
+        sync: false
