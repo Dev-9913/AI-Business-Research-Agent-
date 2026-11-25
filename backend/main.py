@@ -83,7 +83,11 @@ app = FastAPI(
 #   1. set FRONTEND_ORIGIN=https://<your-app>.vercel.app in .env, or
 #   2. replace the default below with the URL Vercel gives you.
 # Repo: https://github.com/Dev-9913/AI-Business-Research-Agent-
-VERCEL_FRONTEND_URL = os.getenv("FRONTEND_ORIGIN", "https://ai-business-research-agent.vercel.app").rstrip("/")
+VERCEL_FRONTEND_URL = os.getenv("FRONTEND_ORIGIN", "https://ai-business-research-agent-coral.vercel.app").rstrip("/")
+
+# This project's Vercel deployments: the production domain plus per-commit
+# preview URLs (ai-business-research-agent-<hash>-dev-6121s-projects.vercel.app).
+VERCEL_ORIGIN_REGEX = r"https://ai-business-research-agent-(coral|[a-z0-9]+-dev-6121s-projects)\.vercel\.app"
 
 # Allow the local Vite dev server (and a same-origin production build)
 # to call this API. Adjust origins here if you deploy the frontend
@@ -97,6 +101,7 @@ app.add_middleware(
         "http://127.0.0.1:5173",
         VERCEL_FRONTEND_URL,
     ],
+    allow_origin_regex=VERCEL_ORIGIN_REGEX,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
